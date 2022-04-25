@@ -6,10 +6,7 @@ const val VISA = "Visa"
 const val MIR = "МИР"
 const val VKPAY = "VKPay"
 
-fun main() {
 
-    println("Комиссия за перевод ${moneyTransfer()} коп.")
-}
 
 fun choicePaymentSystem(): String {
     print(
@@ -61,4 +58,8 @@ fun moneyTransfer(): Int {
         else -> 0
     }
     return amountKop
+}
+fun main() {
+
+    println("Комиссия за перевод ${moneyTransfer()} коп.")
 }

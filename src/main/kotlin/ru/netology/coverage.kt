@@ -25,23 +25,43 @@ fun choicePaymentSystem(): String {
                 "5. VKPay \n"
     )
     val choice = when (readln().toInt()) {
-        1 -> MASTERCARD
-        2 -> MAESTRO
-        3 -> VISA
-        4 -> MIR
-        else -> VKPAY
+        1 -> {
+            MASTERCARD
+        }
+        2 -> {
+            MAESTRO
+        }
+        3 -> {
+            VISA
+        }
+        4 -> {
+            MIR
+        }
+        else -> {
+            VKPAY
+        }
     }
     return choice
 }
 
 fun transferMastercardMaestro(): Int {
-    return if (amount < 75_000_00) 0
-    else (((amount * 0.006) + 2000) / 100).toInt()
+
+    val result = if (amount < 75_000_00) {
+        0
+    } else {
+        (((amount * 0.006) + 2000) / 100).toInt()
+    }
+    return result
 }
 
+
 fun transferVisaMir(): Int {
-    return if ((amount * 0.0075).toInt() < 3500) 3500
-    else ((amount * 0.0075) / 100).toInt()
+    val result = if ((amount * 0.0075).toInt() < 3500) {
+        3500
+    } else {
+        ((amount * 0.0075) / 100).toInt()
+    }
+    return result
 }
 
 fun moneyTransfer() {

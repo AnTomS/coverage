@@ -5,14 +5,10 @@ const val MAESTRO = "Maestro"
 const val VISA = "Visa"
 const val MIR = "МИР"
 const val VKPAY = "VKPay"
-var sumTransferMonth = 324_324
-var sumTransferDay = 22234
-var amount: Int = 50_000_000
 
 fun main() {
 
-    moneyTransfer()
-    limitControl("VKPay", sumTransferMonth, sumTransferDay, amount)
+    println("Комиссия за перевод ${moneyTransfer()} коп.")
 }
 
 fun choicePaymentSystem(): String {
@@ -44,49 +40,25 @@ fun choicePaymentSystem(): String {
     return choice
 }
 
-fun transferMastercardMaestro(): Int {
+fun transferMastercardMaestro(sumTransactionMastercardMaestro : Int): Int {
 
-    val result = if (amount < 75_000_00) {
-        0
-    } else {
-        (((amount * 0.006) + 2000) / 100).toInt()
-    }
-    return result
+    return if (sumTransactionMastercardMaestro < 75_000_00) 0
+    else (((sumTransactionMastercardMaestro * 0.006) + 20_00) / 100).toInt()
 }
 
 
-fun transferVisaMir(): Int {
-    val result = if ((amount * 0.0075).toInt() < 3500) {
-        3500
-    } else {
-        ((amount * 0.0075) / 100).toInt()
-    }
-    return result
+fun transferVisaMir(sumTransactionVisaMir : Int): Int {
+    return if ((sumTransactionVisaMir * 0.0075).toInt() < 35_00) 35_00
+    else ((sumTransactionVisaMir * 0.0075) / 100).toInt()
 }
 
-fun moneyTransfer() {
+fun moneyTransfer(): Int {
     val amountKop = when (choicePaymentSystem()) {
-        MASTERCARD -> transferMastercardMaestro()
-        MAESTRO -> transferMastercardMaestro()
-        VISA -> transferVisaMir()
-        MIR -> transferVisaMir()
+        MASTERCARD -> transferMastercardMaestro(5_000_00)
+        MAESTRO -> transferMastercardMaestro(100_000_00)
+        VISA -> transferVisaMir(12_000)
+        MIR -> transferVisaMir(123_000_00)
         else -> 0
     }
-    return println("Комиссия за перевод $amountKop коп.")
-}
-
-
-fun limitControl(nameCard: String, sumTransferMonth: Int, sumTransferDay: Int, amount: Int) {
-    if (nameCard == "VKPay" || nameCard == "Visa") {
-        if (sumTransferMonth > 4_000_000 || amount > 1_500_000) {
-            println("Превышен лимит переводов в VK Pay")
-
-        } else {
-            if (sumTransferDay > 1_500_000 || sumTransferMonth > 60_000_000) {
-                println("Превышен лимит переводов")
-
-            }
-
-        }
-    }
+    return amountKop
 }

@@ -7,79 +7,40 @@ import org.junit.Assert.*
 class CoverageKtTest {
 
     @Test
-    fun transferMastercardMaestroMinimal() {
-        //Arrange
-        val amount: Int = 75_000
-        //Act
-        val result = 0
+    fun transferMastercardMaestroMin() {
+        //arrange
+        val enterTransaction = 5_000_00
+        //act
+        val result = transferMastercardMaestro(
+            sumTransactionMastercardMaestro = enterTransaction
+        )
         //assert
-        assertEquals(0, result)
+        assertEquals(10, result)
     }
     @Test
     fun transferMastercardMaestroMax() {
-        //Arrange
-        val amount: Int = 50_000_000
-        //Act
-        val result = (((amount * 0.006) + 2000) / 100).toInt()
-        //Assert
-        assertEquals(3010, result)
+        val enterTransaction = 100_000_00
+        val result=  transferMastercardMaestro(
+            sumTransactionMastercardMaestro = enterTransaction
+        )
+        assertEquals(620, result)
     }
 
     @Test
     fun transferVisaMirMin() {
-        //Arrange
-        val amount: Int = 35_000
-        //Act
-        val result = 3500
-        //Assert
+        val enterTransaction = 12_000
+        val result = transferVisaMir(
+            sumTransactionVisaMir = enterTransaction
+        )
         assertEquals(3500, result)
     }
 
     @Test
     fun transferVisaMirMax() {
-        //Arrange
-        val amount: Int = 50_000_000
-        //Act
-        val result = ((amount * 0.0075) / 100).toInt()
-        //Assert
-        assertEquals(3750, result)
-    }
-
-    @Test
-    fun limitControlInDay() {
-        //Arrange
-        val sumTransferDay = 22_234
-        //Act
-        val result = 150_000
-        //Assert
-        assertEquals(150_000, result)
-    }
-    @Test
-    fun limitControlInMonth () {
-        //Arrange
-        val sumTransferMonth = 22_234
-        //Act
-        val result = 600_000
-        //Assert
-        assertEquals(600_000, result)
-    }
-
-    @Test
-    fun limitControlInDayVK() {
-        //Arrange
-        val amount = 22_234
-        //Act
-        val result = 15_000
-        //Assert
-        assertEquals(15_000, result)
-    }
-    @Test
-    fun limitControlInMonthVK () {
-        //Arrange
-        val sumTransferMonth = 22_234
-        //Act
-        val result = 40_000
-        //Assert
-        assertEquals(40_000, result)
+        val enterTransaction = 123_000_00
+        val result = transferVisaMir(
+            sumTransactionVisaMir = enterTransaction
+        )
+        assertEquals(922, result)
     }
 }

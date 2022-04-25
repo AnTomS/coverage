@@ -22,7 +22,7 @@ class CoverageKtTest {
         //Act
         val result = (((amount * 0.006) + 2000) / 100).toInt()
         //Assert
-        assertEquals(3020, result)
+        assertEquals(3010, result)
     }
 
     @Test

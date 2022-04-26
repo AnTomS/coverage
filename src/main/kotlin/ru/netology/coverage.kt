@@ -49,8 +49,8 @@ fun transferVisaMir(sumTransactionVisaMir : Int): Int {
     else ((sumTransactionVisaMir * 0.0075) / 100).toInt()
 }
 
-fun moneyTransfer(): Int {
-    val amountKop = when (choicePaymentSystem()) {
+fun moneyTransfer(choice: String): Int {
+    val amountKop = when (choice) {
         MASTERCARD -> transferMastercardMaestro(5_000_00)
         MAESTRO -> transferMastercardMaestro(100_000_00)
         VISA -> transferVisaMir(12_000)
@@ -60,6 +60,6 @@ fun moneyTransfer(): Int {
     return amountKop
 }
 fun main() {
-
-    println("Комиссия за перевод ${moneyTransfer()} коп.")
+    val choice = choicePaymentSystem()
+    println("Комиссия за перевод ${moneyTransfer(choice)} коп.")
 }

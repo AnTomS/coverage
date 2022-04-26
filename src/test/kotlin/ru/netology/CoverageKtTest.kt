@@ -53,7 +53,7 @@ class CoverageKtTest {
         //act
         val amountKop = moneyTransfer(MASTERCARD)
         //assert
-        assertEquals(922, amountKop)
+        assertEquals(0, amountKop)
     }
 
     @Test
@@ -63,7 +63,7 @@ class CoverageKtTest {
         //act
         val amountKop = moneyTransfer(MAESTRO)
         //assert
-        assertEquals(100, amountKop)
+        assertEquals(620, amountKop)
     }
 
     @Test
@@ -73,7 +73,7 @@ class CoverageKtTest {
         //act
         val amountKop = moneyTransfer(VISA)
         //assert
-        assertEquals(200, amountKop)
+        assertEquals(3500, amountKop)
     }
 
     @Test
@@ -83,7 +83,7 @@ class CoverageKtTest {
         //act
         val amountKop = moneyTransfer(MIR)
         //assert
-        assertEquals(400, amountKop)
+        assertEquals(922, amountKop)
     }
 
     @Test
@@ -93,7 +93,7 @@ class CoverageKtTest {
         //act
         val amountKop = moneyTransfer(VKPAY)
         //assert
-        assertEquals(500, amountKop)
+        assertEquals(0, amountKop)
     }
 }
 
